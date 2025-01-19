@@ -63,6 +63,8 @@ public class AuthServiceImpl implements AuthService {
         boolean matches = bCryptPasswordEncoder.matches(password, optionalUseruser.get().getPassword());
 
         if(matches) {
+            //TODO  if we want to limit sessions we can do one thing, will fetch the no of sessions from repo
+            // if it is less than the limit then will allow for one more session otherwise will forbid it.
             String jwtToken = createJwtToken(optionalUseruser.get().getId(),
                     new ArrayList<>(),
                     optionalUseruser.get().getEmail());
